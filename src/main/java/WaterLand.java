@@ -3,7 +3,7 @@ public class WaterLand {
     public static final int LAND = 1;
 
     public static int countAdjacentLandInMap(int[][] map) {
-
+        if (null == map) return 0;
         int lands = 0;
         for (int y = 0; y < map.length; y++) {
             for (int x = 0; x < map[y].length; x++) {
@@ -16,7 +16,7 @@ public class WaterLand {
     }
 
     public static int countIslandsInMap(int[][] map) {
-
+        if (null == map) return 0;
         int lands = 0;
         for (int y = 0; y < map.length; y++) {
             for (int x = 0; x < map[y].length; x++) {
