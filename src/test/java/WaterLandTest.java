@@ -7,36 +7,24 @@ class WaterLandTest {
 
     int[][] test_island_case1 = new int[][]
             {
-                    {
-                            1, 1, 1, 1, 0},
-                    {
-                            1, 1, 0, 1, 0},
-                    {
-                            1, 1, 0, 0, 0},
-                    {
-                            0, 0, 0, 0, 0}
+                    {1, 1, 1, 1, 0},
+                    {1, 1, 0, 1, 0},
+                    {1, 1, 0, 0, 0},
+                    {0, 0, 0, 0, 0}
             };
     int[][] test_island_case2 = new int[][]
             {
-                    {
-                            1, 1, 0, 0, 0},
-                    {
-                            1, 1, 0, 0, 0},
-                    {
-                            0, 0, 1, 0, 0},
-                    {
-                            0, 0, 0, 1, 1}
+                    {1, 1, 0, 0, 0},
+                    {1, 1, 0, 0, 0},
+                    {0, 0, 1, 0, 0},
+                    {0, 0, 0, 1, 1}
             };
     int[][] test_island_case3 = new int[][]
             {
-                    {
-                            1, 1, 0, 0, 0, 1},
-                    {
-                            1, 1, 0, 0, 0, 0},
-                    {
-                            0, 0, 1, 0, 0, 0},
-                    {
-                            0, 0, 0, 1, 1, 0}
+                    {1, 1, 0, 0, 0, 1},
+                    {1, 1, 0, 0, 0, 0},
+                    {0, 0, 1, 0, 0, 0},
+                    {0, 0, 0, 1, 1, 0}
             };
 
     @Test
@@ -45,13 +33,31 @@ class WaterLandTest {
     }
 
     @Test
+    void countAdjacentLandInNotSquareMap() {
+        int[][] irregularMap = new int[][]{
+                {1, 1, 0, 0, 0},
+                {1, 1, 0, 0}};
+        assertEquals(4, WaterLand.countAdjacentLandInMap(irregularMap));
+    }
+
+    @Test
+    void countAdjacentLandInSingleRowMap() {
+        int[][] singleRowMap = new int[][]{{1, 1, 0, 0, 0}};
+        assertEquals(2, WaterLand.countAdjacentLandInMap(singleRowMap));
+    }
+
+    @Test
+    void countAdjacentLandInSingleValueMap() {
+        int[][] singleRowMap = new int[][]{{1}};
+        assertEquals(0, WaterLand.countAdjacentLandInMap(singleRowMap));
+    }
+
+    @Test
     void countAdjacentLandInMap() {
         assertNotEquals(0, WaterLand.countAdjacentLandInMap(test_island_case1));
         assertEquals(9, WaterLand.countAdjacentLandInMap(test_island_case1));
-
         assertNotEquals(0, WaterLand.countAdjacentLandInMap(test_island_case2));
         assertEquals(6, WaterLand.countAdjacentLandInMap(test_island_case2));
-
     }
 
     @Test
@@ -63,7 +69,6 @@ class WaterLandTest {
     void countIslandsInMap() {
         assertEquals(1, WaterLand.countIslandsInMap(test_island_case2));
         assertNotEquals(0, WaterLand.countIslandsInMap(test_island_case2));
-
         assertEquals(2, WaterLand.countIslandsInMap(test_island_case3));
         assertNotEquals(3, WaterLand.countIslandsInMap(test_island_case3));
         assertNotEquals(0, WaterLand.countIslandsInMap(test_island_case3));
